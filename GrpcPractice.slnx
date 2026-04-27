@@ -1,5 +1,6 @@
 <Solution>
   <Folder Name="/Proto/">
+    <File Path="calculation.proto" />
     <File Path="dummy.proto" />
     <File Path="greeting.proto" />
   </Folder>
