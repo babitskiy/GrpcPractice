@@ -1,7 +1,8 @@
 <Solution>
   <Folder Name="/Proto/">
     <File Path="dummy.proto" />
+    <File Path="greeting.proto" />
   </Folder>
-  <Project Path="Client/Client.csproj" />
-  <Project Path="Server/Server.csproj" />
+  <Project Path="Client/client.csproj" />
+  <Project Path="Server/server.csproj" />
 </Solution>

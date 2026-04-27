@@ -1,13 +1,16 @@
-﻿using Grpc.Core;
+﻿using Greet;
+using Grpc.Core;
+using Server;
 
 const int Port = 50051;
 
-Server server = null;
+Grpc.Core.Server server = null;
 
 try
 {
-	server = new Server()
+	server = new Grpc.Core.Server()
 	{
+		Services = {GreetingService.BindService(new GreetingServiceImpl())},
 		Ports = { new ServerPort("localhost", Port, ServerCredentials.Insecure) }
 	};
 
@@ -24,5 +27,5 @@ catch (IOException e)
 finally
 {
 	if (server is not null)
-		await server.ShutdownAsync().wai;
+		await server.ShutdownAsync();
 }
