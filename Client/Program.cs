@@ -6,7 +6,7 @@ const string Target = "127.0.0.1:50051";
 
 Channel channel = new(Target, ChannelCredentials.Insecure);
 
-channel.ConnectAsync().ContinueWith((task) =>
+await channel.ConnectAsync().ContinueWith((task) =>
 {
     if (task.Status == TaskStatus.RanToCompletion)
         Console.WriteLine("The client connected successfully");
@@ -20,6 +20,13 @@ var greeting = new Greeting() { FirstName = "John", LastName = "Rush" };
 var request = new GreetingRequest() { Greeting = greeting };
 var response = client.Greet(request);
 Console.WriteLine(response?.Result);
+
+var greetManyTimesResponse = client.GreetManyTimes(new GreetManyTimesRequest() { Greeting = greeting });
+while (await greetManyTimesResponse.ResponseStream.MoveNext())
+{
+    Console.WriteLine(greetManyTimesResponse.ResponseStream.Current.Result);
+    await Task.Delay(1000);
+}
 #endregion GreetingService
 
 #region CalculationService
