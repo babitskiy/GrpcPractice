@@ -17,9 +17,9 @@ var client = new GreetingService.GreetingServiceClient(channel);
 
 var greeting = new Greeting() { FirstName = "John", LastName = "Rush" };
 
-var request = new GreetingRequest() { Greeting = greeting };
-var response = client.Greet(request);
-Console.WriteLine(response?.Result);
+var greetingRequest = new GreetingRequest() { Greeting = greeting };
+var greetingResponse = client.Greet(greetingRequest);
+Console.WriteLine(greetingResponse?.Result);
 
 var greetManyTimesResponse = client.GreetManyTimes(new GreetManyTimesRequest() { Greeting = greeting });
 while (await greetManyTimesResponse.ResponseStream.MoveNext())
@@ -27,6 +27,15 @@ while (await greetManyTimesResponse.ResponseStream.MoveNext())
     Console.WriteLine(greetManyTimesResponse.ResponseStream.Current.Result);
     await Task.Delay(500);
 }
+
+var longGreetRequest = new LongGreetRequest() { Greeting = greeting };
+var stream = client.LongGreet();
+foreach (var i in Enumerable.Range(1, 10))
+    await stream.RequestStream.WriteAsync(longGreetRequest);
+
+await stream.RequestStream.CompleteAsync();
+var longGreetResponse = await stream.ResponseAsync;
+Console.WriteLine(longGreetResponse.Result);
 #endregion GreetingService
 
 #region CalculationService
