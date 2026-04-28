@@ -25,7 +25,7 @@ var greetManyTimesResponse = client.GreetManyTimes(new GreetManyTimesRequest() {
 while (await greetManyTimesResponse.ResponseStream.MoveNext())
 {
     Console.WriteLine(greetManyTimesResponse.ResponseStream.Current.Result);
-    await Task.Delay(1000);
+    await Task.Delay(500);
 }
 #endregion GreetingService
 
@@ -40,6 +40,10 @@ Console.WriteLine(calcMultipyResponse.Result);
 
 var calcDivideResponse = calcClient.Divide(new CalculationRequest() { FirstParam = 5, SecondParam = 10});
 Console.WriteLine(calcDivideResponse.Result);
+
+var primeNumberDecomposition = calcClient.PrimeNumberDecomposition(new PrimeNumberDecompositionRequest() { PrimeNumber = 120});
+while (await primeNumberDecomposition.ResponseStream.MoveNext())
+    Console.WriteLine("Part of prime number decomposition: {0}", primeNumberDecomposition.ResponseStream.Current.Result);
 #endregion CalculationService
 
 await channel.ShutdownAsync();

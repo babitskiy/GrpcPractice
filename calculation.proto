@@ -11,8 +11,13 @@ message CalculationResponse {
 	double result = 1;
 }
 
+message PrimeNumberDecompositionRequest {
+	double primeNumber = 1;
+}
+
 service CalculationService {
 	rpc Add (CalculationRequest) returns (CalculationResponse) {}
 	rpc Multiply (CalculationRequest) returns (CalculationResponse) {}
 	rpc Divide (CalculationRequest) returns (CalculationResponse) {}
+	rpc PrimeNumberDecomposition (PrimeNumberDecompositionRequest) returns (stream CalculationResponse) {}
 }

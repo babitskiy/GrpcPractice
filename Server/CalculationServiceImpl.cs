@@ -17,5 +17,24 @@ namespace server
         public override Task<CalculationResponse> Divide(CalculationRequest request, ServerCallContext context)
             => Task.FromResult(new CalculationResponse()
             { Result = request.FirstParam / request.SecondParam});
+
+        public override async Task PrimeNumberDecomposition(PrimeNumberDecompositionRequest request, IServerStreamWriter<CalculationResponse> responseStream, ServerCallContext context)
+        {
+            double divider = 2;
+            double primeNumber = request.PrimeNumber;
+
+            while (primeNumber > 1)
+            {
+                if (primeNumber % divider == 0)
+                {
+                    await responseStream.WriteAsync(new CalculationResponse() { Result = divider });
+                    primeNumber /= divider;
+                }
+                else
+                    divider++;
+
+                await Task.Delay(500);
+            }
+        }
     }
 }

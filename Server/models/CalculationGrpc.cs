@@ -49,6 +49,8 @@ namespace Calculation {
     static readonly grpc::Marshaller<global::Calculation.CalculationRequest> __Marshaller_calculation_CalculationRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Calculation.CalculationRequest.Parser));
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Marshaller<global::Calculation.CalculationResponse> __Marshaller_calculation_CalculationResponse = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Calculation.CalculationResponse.Parser));
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Marshaller<global::Calculation.PrimeNumberDecompositionRequest> __Marshaller_calculation_PrimeNumberDecompositionRequest = grpc::Marshallers.Create(__Helper_SerializeMessage, context => __Helper_DeserializeMessage(context, global::Calculation.PrimeNumberDecompositionRequest.Parser));
 
     [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
     static readonly grpc::Method<global::Calculation.CalculationRequest, global::Calculation.CalculationResponse> __Method_Add = new grpc::Method<global::Calculation.CalculationRequest, global::Calculation.CalculationResponse>(
@@ -72,6 +74,14 @@ namespace Calculation {
         __ServiceName,
         "Divide",
         __Marshaller_calculation_CalculationRequest,
+        __Marshaller_calculation_CalculationResponse);
+
+    [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+    static readonly grpc::Method<global::Calculation.PrimeNumberDecompositionRequest, global::Calculation.CalculationResponse> __Method_PrimeNumberDecomposition = new grpc::Method<global::Calculation.PrimeNumberDecompositionRequest, global::Calculation.CalculationResponse>(
+        grpc::MethodType.ServerStreaming,
+        __ServiceName,
+        "PrimeNumberDecomposition",
+        __Marshaller_calculation_PrimeNumberDecompositionRequest,
         __Marshaller_calculation_CalculationResponse);
 
     /// <summary>Service descriptor</summary>
@@ -98,6 +108,12 @@ namespace Calculation {
 
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       public virtual global::System.Threading.Tasks.Task<global::Calculation.CalculationResponse> Divide(global::Calculation.CalculationRequest request, grpc::ServerCallContext context)
+      {
+        throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
+      }
+
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual global::System.Threading.Tasks.Task PrimeNumberDecomposition(global::Calculation.PrimeNumberDecompositionRequest request, grpc::IServerStreamWriter<global::Calculation.CalculationResponse> responseStream, grpc::ServerCallContext context)
       {
         throw new grpc::RpcException(new grpc::Status(grpc::StatusCode.Unimplemented, ""));
       }
@@ -191,6 +207,16 @@ namespace Calculation {
       {
         return CallInvoker.AsyncUnaryCall(__Method_Divide, null, options, request);
       }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncServerStreamingCall<global::Calculation.CalculationResponse> PrimeNumberDecomposition(global::Calculation.PrimeNumberDecompositionRequest request, grpc::Metadata headers = null, global::System.DateTime? deadline = null, global::System.Threading.CancellationToken cancellationToken = default(global::System.Threading.CancellationToken))
+      {
+        return PrimeNumberDecomposition(request, new grpc::CallOptions(headers, deadline, cancellationToken));
+      }
+      [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
+      public virtual grpc::AsyncServerStreamingCall<global::Calculation.CalculationResponse> PrimeNumberDecomposition(global::Calculation.PrimeNumberDecompositionRequest request, grpc::CallOptions options)
+      {
+        return CallInvoker.AsyncServerStreamingCall(__Method_PrimeNumberDecomposition, null, options, request);
+      }
       /// <summary>Creates a new instance of client from given <c>ClientBaseConfiguration</c>.</summary>
       [global::System.CodeDom.Compiler.GeneratedCode("grpc_csharp_plugin", null)]
       protected override CalculationServiceClient NewInstance(ClientBaseConfiguration configuration)
@@ -207,7 +233,8 @@ namespace Calculation {
       return grpc::ServerServiceDefinition.CreateBuilder()
           .AddMethod(__Method_Add, serviceImpl.Add)
           .AddMethod(__Method_Multiply, serviceImpl.Multiply)
-          .AddMethod(__Method_Divide, serviceImpl.Divide).Build();
+          .AddMethod(__Method_Divide, serviceImpl.Divide)
+          .AddMethod(__Method_PrimeNumberDecomposition, serviceImpl.PrimeNumberDecomposition).Build();
     }
 
     /// <summary>Register service method with a service binder with or without implementation. Useful when customizing the service binding logic.
@@ -220,6 +247,7 @@ namespace Calculation {
       serviceBinder.AddMethod(__Method_Add, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Calculation.CalculationRequest, global::Calculation.CalculationResponse>(serviceImpl.Add));
       serviceBinder.AddMethod(__Method_Multiply, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Calculation.CalculationRequest, global::Calculation.CalculationResponse>(serviceImpl.Multiply));
       serviceBinder.AddMethod(__Method_Divide, serviceImpl == null ? null : new grpc::UnaryServerMethod<global::Calculation.CalculationRequest, global::Calculation.CalculationResponse>(serviceImpl.Divide));
+      serviceBinder.AddMethod(__Method_PrimeNumberDecomposition, serviceImpl == null ? null : new grpc::ServerStreamingServerMethod<global::Calculation.PrimeNumberDecompositionRequest, global::Calculation.CalculationResponse>(serviceImpl.PrimeNumberDecomposition));
     }
 
   }

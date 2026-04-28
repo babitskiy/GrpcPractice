@@ -27,17 +27,22 @@ namespace Calculation {
             "ChFjYWxjdWxhdGlvbi5wcm90bxILY2FsY3VsYXRpb24iPwoSQ2FsY3VsYXRp",
             "b25SZXF1ZXN0EhMKC2ZpcnN0X3BhcmFtGAEgASgBEhQKDHNlY29uZF9wYXJh",
             "bRgCIAEoASIlChNDYWxjdWxhdGlvblJlc3BvbnNlEg4KBnJlc3VsdBgBIAEo",
-            "ATKAAgoSQ2FsY3VsYXRpb25TZXJ2aWNlEkoKA0FkZBIfLmNhbGN1bGF0aW9u",
-            "LkNhbGN1bGF0aW9uUmVxdWVzdBogLmNhbGN1bGF0aW9uLkNhbGN1bGF0aW9u",
-            "UmVzcG9uc2UiABJPCghNdWx0aXBseRIfLmNhbGN1bGF0aW9uLkNhbGN1bGF0",
+            "ASI2Ch9QcmltZU51bWJlckRlY29tcG9zaXRpb25SZXF1ZXN0EhMKC3ByaW1l",
+            "TnVtYmVyGAEgASgBMvACChJDYWxjdWxhdGlvblNlcnZpY2USSgoDQWRkEh8u",
+            "Y2FsY3VsYXRpb24uQ2FsY3VsYXRpb25SZXF1ZXN0GiAuY2FsY3VsYXRpb24u",
+            "Q2FsY3VsYXRpb25SZXNwb25zZSIAEk8KCE11bHRpcGx5Eh8uY2FsY3VsYXRp",
+            "b24uQ2FsY3VsYXRpb25SZXF1ZXN0GiAuY2FsY3VsYXRpb24uQ2FsY3VsYXRp",
+            "b25SZXNwb25zZSIAEk0KBkRpdmlkZRIfLmNhbGN1bGF0aW9uLkNhbGN1bGF0",
             "aW9uUmVxdWVzdBogLmNhbGN1bGF0aW9uLkNhbGN1bGF0aW9uUmVzcG9uc2Ui",
-            "ABJNCgZEaXZpZGUSHy5jYWxjdWxhdGlvbi5DYWxjdWxhdGlvblJlcXVlc3Qa",
-            "IC5jYWxjdWxhdGlvbi5DYWxjdWxhdGlvblJlc3BvbnNlIgBiBnByb3RvMw=="));
+            "ABJuChhQcmltZU51bWJlckRlY29tcG9zaXRpb24SLC5jYWxjdWxhdGlvbi5Q",
+            "cmltZU51bWJlckRlY29tcG9zaXRpb25SZXF1ZXN0GiAuY2FsY3VsYXRpb24u",
+            "Q2FsY3VsYXRpb25SZXNwb25zZSIAMAFiBnByb3RvMw=="));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Calculation.CalculationRequest), global::Calculation.CalculationRequest.Parser, new[]{ "FirstParam", "SecondParam" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Calculation.CalculationResponse), global::Calculation.CalculationResponse.Parser, new[]{ "Result" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Calculation.CalculationResponse), global::Calculation.CalculationResponse.Parser, new[]{ "Result" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Calculation.PrimeNumberDecompositionRequest), global::Calculation.PrimeNumberDecompositionRequest.Parser, new[]{ "PrimeNumber" }, null, null, null, null)
           }));
     }
     #endregion
@@ -468,6 +473,204 @@ namespace Calculation {
             break;
           case 9: {
             Result = input.ReadDouble();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class PrimeNumberDecompositionRequest : pb::IMessage<PrimeNumberDecompositionRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<PrimeNumberDecompositionRequest> _parser = new pb::MessageParser<PrimeNumberDecompositionRequest>(() => new PrimeNumberDecompositionRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<PrimeNumberDecompositionRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Calculation.CalculationReflection.Descriptor.MessageTypes[2]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PrimeNumberDecompositionRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PrimeNumberDecompositionRequest(PrimeNumberDecompositionRequest other) : this() {
+      primeNumber_ = other.primeNumber_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public PrimeNumberDecompositionRequest Clone() {
+      return new PrimeNumberDecompositionRequest(this);
+    }
+
+    /// <summary>Field number for the "primeNumber" field.</summary>
+    public const int PrimeNumberFieldNumber = 1;
+    private double primeNumber_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double PrimeNumber {
+      get { return primeNumber_; }
+      set {
+        primeNumber_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as PrimeNumberDecompositionRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(PrimeNumberDecompositionRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(PrimeNumber, other.PrimeNumber)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (PrimeNumber != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(PrimeNumber);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (PrimeNumber != 0D) {
+        output.WriteRawTag(9);
+        output.WriteDouble(PrimeNumber);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (PrimeNumber != 0D) {
+        output.WriteRawTag(9);
+        output.WriteDouble(PrimeNumber);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (PrimeNumber != 0D) {
+        size += 1 + 8;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(PrimeNumberDecompositionRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.PrimeNumber != 0D) {
+        PrimeNumber = other.PrimeNumber;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 9: {
+            PrimeNumber = input.ReadDouble();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 9: {
+            PrimeNumber = input.ReadDouble();
             break;
           }
         }
