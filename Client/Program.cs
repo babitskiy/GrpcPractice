@@ -1,6 +1,7 @@
 ﻿using Calculation;
 using Greet;
 using Grpc.Core;
+using Sqrt;
 
 const string Target = "127.0.0.1:50051";
 
@@ -41,10 +42,14 @@ var calculationClient = new CalculationService.CalculationServiceClient(channel)
 await DoFindMaximum(calculationClient);
 #endregion
 
+#region SqrtService
+var sqrtClient = new SqrtService.SqrtServiceClient(channel);
+await DoCalculateSqrt(sqrtClient);
+#endregion
+
 await channel.ShutdownAsync();
 Console.WriteLine("\nPress any key to exit...");
 Console.ReadKey();
-
 #region GreetingService Methods
 
 static async Task DoGreet(GreetingService.GreetingServiceClient client)
@@ -190,4 +195,22 @@ static async Task DoFindMaximum(CalculationService.CalculationServiceClient clie
     await responseReaderTask;
 }
 
+#endregion
+
+#region SqrtService Methods
+async Task DoCalculateSqrt(SqrtService.SqrtServiceClient client)
+{
+    int number = -1;
+
+    try
+    {
+        var response = client.sqrt(new SqrtRequest() { Number = number });
+
+        Console.WriteLine(response.SquareRoot);
+    }
+    catch (RpcException e)
+    {
+        Console.WriteLine("Error: " + e.Status.Detail);
+    }
+}
 #endregion

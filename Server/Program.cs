@@ -3,6 +3,7 @@ using Greet;
 using Grpc.Core;
 using server;
 using Server;
+using Sqrt;
 
 const int Port = 50051;
 
@@ -12,9 +13,10 @@ try
 {
 	server = new Grpc.Core.Server()
 	{
-		Services = {	GreetingService.BindService(new GreetingServiceImpl())
+		Services = {	  GreetingService.BindService(new GreetingServiceImpl())
 						, CalculationService.BindService(new CalculationServiceImpl())
-						},
+						, SqrtService.BindService(new SqrtServiceImpl())
+                        },
 		Ports = { new ServerPort("localhost", Port, ServerCredentials.Insecure) }
 	};
 

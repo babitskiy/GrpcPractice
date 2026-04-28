@@ -3,6 +3,7 @@
     <File Path="calculation.proto" />
     <File Path="dummy.proto" />
     <File Path="greeting.proto" />
+    <File Path="sqrt.proto" />
   </Folder>
   <Project Path="Client/client.csproj" />
   <Project Path="Server/server.csproj" />
