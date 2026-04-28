@@ -15,9 +15,18 @@ message PrimeNumberDecompositionRequest {
 	double primeNumber = 1;
 }
 
+message ComputeAverageRequest {
+	int32 number = 1;
+}
+
+message ComputeAverageResponse {
+	double averageNumber = 1;
+}
+
 service CalculationService {
 	rpc Add (CalculationRequest) returns (CalculationResponse) {}
 	rpc Multiply (CalculationRequest) returns (CalculationResponse) {}
 	rpc Divide (CalculationRequest) returns (CalculationResponse) {}
 	rpc PrimeNumberDecomposition (PrimeNumberDecompositionRequest) returns (stream CalculationResponse) {}
+	rpc ComputeAverage (stream ComputeAverageRequest) returns (ComputeAverageResponse) {}
 }

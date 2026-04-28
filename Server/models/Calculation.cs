@@ -28,7 +28,9 @@ namespace Calculation {
             "b25SZXF1ZXN0EhMKC2ZpcnN0X3BhcmFtGAEgASgBEhQKDHNlY29uZF9wYXJh",
             "bRgCIAEoASIlChNDYWxjdWxhdGlvblJlc3BvbnNlEg4KBnJlc3VsdBgBIAEo",
             "ASI2Ch9QcmltZU51bWJlckRlY29tcG9zaXRpb25SZXF1ZXN0EhMKC3ByaW1l",
-            "TnVtYmVyGAEgASgBMvACChJDYWxjdWxhdGlvblNlcnZpY2USSgoDQWRkEh8u",
+            "TnVtYmVyGAEgASgBIicKFUNvbXB1dGVBdmVyYWdlUmVxdWVzdBIOCgZudW1i",
+            "ZXIYASABKAUiLwoWQ29tcHV0ZUF2ZXJhZ2VSZXNwb25zZRIVCg1hdmVyYWdl",
+            "TnVtYmVyGAEgASgBMs8DChJDYWxjdWxhdGlvblNlcnZpY2USSgoDQWRkEh8u",
             "Y2FsY3VsYXRpb24uQ2FsY3VsYXRpb25SZXF1ZXN0GiAuY2FsY3VsYXRpb24u",
             "Q2FsY3VsYXRpb25SZXNwb25zZSIAEk8KCE11bHRpcGx5Eh8uY2FsY3VsYXRp",
             "b24uQ2FsY3VsYXRpb25SZXF1ZXN0GiAuY2FsY3VsYXRpb24uQ2FsY3VsYXRp",
@@ -36,13 +38,17 @@ namespace Calculation {
             "aW9uUmVxdWVzdBogLmNhbGN1bGF0aW9uLkNhbGN1bGF0aW9uUmVzcG9uc2Ui",
             "ABJuChhQcmltZU51bWJlckRlY29tcG9zaXRpb24SLC5jYWxjdWxhdGlvbi5Q",
             "cmltZU51bWJlckRlY29tcG9zaXRpb25SZXF1ZXN0GiAuY2FsY3VsYXRpb24u",
-            "Q2FsY3VsYXRpb25SZXNwb25zZSIAMAFiBnByb3RvMw=="));
+            "Q2FsY3VsYXRpb25SZXNwb25zZSIAMAESXQoOQ29tcHV0ZUF2ZXJhZ2USIi5j",
+            "YWxjdWxhdGlvbi5Db21wdXRlQXZlcmFnZVJlcXVlc3QaIy5jYWxjdWxhdGlv",
+            "bi5Db21wdXRlQXZlcmFnZVJlc3BvbnNlIgAoAWIGcHJvdG8z"));
       descriptor = pbr::FileDescriptor.FromGeneratedCode(descriptorData,
           new pbr::FileDescriptor[] { },
           new pbr::GeneratedClrTypeInfo(null, null, new pbr::GeneratedClrTypeInfo[] {
             new pbr::GeneratedClrTypeInfo(typeof(global::Calculation.CalculationRequest), global::Calculation.CalculationRequest.Parser, new[]{ "FirstParam", "SecondParam" }, null, null, null, null),
             new pbr::GeneratedClrTypeInfo(typeof(global::Calculation.CalculationResponse), global::Calculation.CalculationResponse.Parser, new[]{ "Result" }, null, null, null, null),
-            new pbr::GeneratedClrTypeInfo(typeof(global::Calculation.PrimeNumberDecompositionRequest), global::Calculation.PrimeNumberDecompositionRequest.Parser, new[]{ "PrimeNumber" }, null, null, null, null)
+            new pbr::GeneratedClrTypeInfo(typeof(global::Calculation.PrimeNumberDecompositionRequest), global::Calculation.PrimeNumberDecompositionRequest.Parser, new[]{ "PrimeNumber" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Calculation.ComputeAverageRequest), global::Calculation.ComputeAverageRequest.Parser, new[]{ "Number" }, null, null, null, null),
+            new pbr::GeneratedClrTypeInfo(typeof(global::Calculation.ComputeAverageResponse), global::Calculation.ComputeAverageResponse.Parser, new[]{ "AverageNumber" }, null, null, null, null)
           }));
     }
     #endregion
@@ -671,6 +677,402 @@ namespace Calculation {
             break;
           case 9: {
             PrimeNumber = input.ReadDouble();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class ComputeAverageRequest : pb::IMessage<ComputeAverageRequest>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ComputeAverageRequest> _parser = new pb::MessageParser<ComputeAverageRequest>(() => new ComputeAverageRequest());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ComputeAverageRequest> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Calculation.CalculationReflection.Descriptor.MessageTypes[3]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ComputeAverageRequest() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ComputeAverageRequest(ComputeAverageRequest other) : this() {
+      number_ = other.number_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ComputeAverageRequest Clone() {
+      return new ComputeAverageRequest(this);
+    }
+
+    /// <summary>Field number for the "number" field.</summary>
+    public const int NumberFieldNumber = 1;
+    private int number_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int Number {
+      get { return number_; }
+      set {
+        number_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ComputeAverageRequest);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ComputeAverageRequest other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (Number != other.Number) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (Number != 0) hash ^= Number.GetHashCode();
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (Number != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Number);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (Number != 0) {
+        output.WriteRawTag(8);
+        output.WriteInt32(Number);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (Number != 0) {
+        size += 1 + pb::CodedOutputStream.ComputeInt32Size(Number);
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ComputeAverageRequest other) {
+      if (other == null) {
+        return;
+      }
+      if (other.Number != 0) {
+        Number = other.Number;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 8: {
+            Number = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 8: {
+            Number = input.ReadInt32();
+            break;
+          }
+        }
+      }
+    }
+    #endif
+
+  }
+
+  [global::System.Diagnostics.DebuggerDisplayAttribute("{ToString(),nq}")]
+  public sealed partial class ComputeAverageResponse : pb::IMessage<ComputeAverageResponse>
+  #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      , pb::IBufferMessage
+  #endif
+  {
+    private static readonly pb::MessageParser<ComputeAverageResponse> _parser = new pb::MessageParser<ComputeAverageResponse>(() => new ComputeAverageResponse());
+    private pb::UnknownFieldSet _unknownFields;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pb::MessageParser<ComputeAverageResponse> Parser { get { return _parser; } }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public static pbr::MessageDescriptor Descriptor {
+      get { return global::Calculation.CalculationReflection.Descriptor.MessageTypes[4]; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    pbr::MessageDescriptor pb::IMessage.Descriptor {
+      get { return Descriptor; }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ComputeAverageResponse() {
+      OnConstruction();
+    }
+
+    partial void OnConstruction();
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ComputeAverageResponse(ComputeAverageResponse other) : this() {
+      averageNumber_ = other.averageNumber_;
+      _unknownFields = pb::UnknownFieldSet.Clone(other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public ComputeAverageResponse Clone() {
+      return new ComputeAverageResponse(this);
+    }
+
+    /// <summary>Field number for the "averageNumber" field.</summary>
+    public const int AverageNumberFieldNumber = 1;
+    private double averageNumber_;
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public double AverageNumber {
+      get { return averageNumber_; }
+      set {
+        averageNumber_ = value;
+      }
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override bool Equals(object other) {
+      return Equals(other as ComputeAverageResponse);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public bool Equals(ComputeAverageResponse other) {
+      if (ReferenceEquals(other, null)) {
+        return false;
+      }
+      if (ReferenceEquals(other, this)) {
+        return true;
+      }
+      if (!pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.Equals(AverageNumber, other.AverageNumber)) return false;
+      return Equals(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override int GetHashCode() {
+      int hash = 1;
+      if (AverageNumber != 0D) hash ^= pbc::ProtobufEqualityComparers.BitwiseDoubleEqualityComparer.GetHashCode(AverageNumber);
+      if (_unknownFields != null) {
+        hash ^= _unknownFields.GetHashCode();
+      }
+      return hash;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public override string ToString() {
+      return pb::JsonFormatter.ToDiagnosticString(this);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void WriteTo(pb::CodedOutputStream output) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      output.WriteRawMessage(this);
+    #else
+      if (AverageNumber != 0D) {
+        output.WriteRawTag(9);
+        output.WriteDouble(AverageNumber);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(output);
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalWriteTo(ref pb::WriteContext output) {
+      if (AverageNumber != 0D) {
+        output.WriteRawTag(9);
+        output.WriteDouble(AverageNumber);
+      }
+      if (_unknownFields != null) {
+        _unknownFields.WriteTo(ref output);
+      }
+    }
+    #endif
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public int CalculateSize() {
+      int size = 0;
+      if (AverageNumber != 0D) {
+        size += 1 + 8;
+      }
+      if (_unknownFields != null) {
+        size += _unknownFields.CalculateSize();
+      }
+      return size;
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(ComputeAverageResponse other) {
+      if (other == null) {
+        return;
+      }
+      if (other.AverageNumber != 0D) {
+        AverageNumber = other.AverageNumber;
+      }
+      _unknownFields = pb::UnknownFieldSet.MergeFrom(_unknownFields, other._unknownFields);
+    }
+
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    public void MergeFrom(pb::CodedInputStream input) {
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+      input.ReadRawMessage(this);
+    #else
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, input);
+            break;
+          case 9: {
+            AverageNumber = input.ReadDouble();
+            break;
+          }
+        }
+      }
+    #endif
+    }
+
+    #if !GOOGLE_PROTOBUF_REFSTRUCT_COMPATIBILITY_MODE
+    [global::System.Diagnostics.DebuggerNonUserCodeAttribute]
+    [global::System.CodeDom.Compiler.GeneratedCode("protoc", null)]
+    void pb::IBufferMessage.InternalMergeFrom(ref pb::ParseContext input) {
+      uint tag;
+      while ((tag = input.ReadTag()) != 0) {
+      if ((tag & 7) == 4) {
+        // Abort on any end group tag.
+        return;
+      }
+      switch(tag) {
+          default:
+            _unknownFields = pb::UnknownFieldSet.MergeFieldFrom(_unknownFields, ref input);
+            break;
+          case 9: {
+            AverageNumber = input.ReadDouble();
             break;
           }
         }

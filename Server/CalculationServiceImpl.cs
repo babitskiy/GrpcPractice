@@ -36,5 +36,19 @@ namespace server
                 await Task.Delay(500);
             }
         }
+
+        public override async Task<ComputeAverageResponse> ComputeAverage(IAsyncStreamReader<ComputeAverageRequest> requestStream, ServerCallContext context)
+        {
+            int count = 0;
+            double sum = 0;
+
+            while (await requestStream.MoveNext())
+            {
+                sum += requestStream.Current.Number;
+                count++;
+            }
+
+            return new ComputeAverageResponse() { AverageNumber = sum / count };
+        }
     }
 }

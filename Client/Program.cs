@@ -13,15 +13,15 @@ await channel.ConnectAsync().ContinueWith((task) =>
 });
 
 #region GreetingService
-var client = new GreetingService.GreetingServiceClient(channel);
+var greetClient = new GreetingService.GreetingServiceClient(channel);
 
 var greeting = new Greeting() { FirstName = "John", LastName = "Rush" };
 
 var greetingRequest = new GreetingRequest() { Greeting = greeting };
-var greetingResponse = client.Greet(greetingRequest);
+var greetingResponse = greetClient.Greet(greetingRequest);
 Console.WriteLine(greetingResponse?.Result);
 
-var greetManyTimesResponse = client.GreetManyTimes(new GreetManyTimesRequest() { Greeting = greeting });
+var greetManyTimesResponse = greetClient.GreetManyTimes(new GreetManyTimesRequest() { Greeting = greeting });
 while (await greetManyTimesResponse.ResponseStream.MoveNext())
 {
     Console.WriteLine(greetManyTimesResponse.ResponseStream.Current.Result);
@@ -29,12 +29,12 @@ while (await greetManyTimesResponse.ResponseStream.MoveNext())
 }
 
 var longGreetRequest = new LongGreetRequest() { Greeting = greeting };
-var stream = client.LongGreet();
+var longGreetStream = greetClient.LongGreet();
 foreach (var i in Enumerable.Range(1, 10))
-    await stream.RequestStream.WriteAsync(longGreetRequest);
+    await longGreetStream.RequestStream.WriteAsync(longGreetRequest);
 
-await stream.RequestStream.CompleteAsync();
-var longGreetResponse = await stream.ResponseAsync;
+await longGreetStream.RequestStream.CompleteAsync();
+var longGreetResponse = await longGreetStream.ResponseAsync;
 Console.WriteLine(longGreetResponse.Result);
 #endregion GreetingService
 
@@ -53,7 +53,15 @@ Console.WriteLine(calcDivideResponse.Result);
 var primeNumberDecomposition = calcClient.PrimeNumberDecomposition(new PrimeNumberDecompositionRequest() { PrimeNumber = 120});
 while (await primeNumberDecomposition.ResponseStream.MoveNext())
     Console.WriteLine("Part of prime number decomposition: {0}", primeNumberDecomposition.ResponseStream.Current.Result);
+
+var computeAverageStream = calcClient.ComputeAverage();
+foreach (var number in new int[] { 10, 15, 18, 20, 22, 30 })
+    await computeAverageStream.RequestStream.WriteAsync(new ComputeAverageRequest() { Number = number});
+
+await computeAverageStream.RequestStream.CompleteAsync();
+var computeAverageResult = await computeAverageStream.ResponseAsync;
+Console.WriteLine(computeAverageResult.AverageNumber);
 #endregion CalculationService
 
-await channel.ShutdownAsync();
+    await channel.ShutdownAsync();
 Console.ReadKey();
