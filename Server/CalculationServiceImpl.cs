@@ -50,5 +50,22 @@ namespace server
 
             return new ComputeAverageResponse() { AverageNumber = sum / count };
         }
+
+        public override async Task FindMaximum(IAsyncStreamReader<FindMaximumRequest> requestStream, 
+            IServerStreamWriter<FindMaximumResponse> responseStream, 
+            ServerCallContext context)
+        {
+            int maxNumber = Int32.MinValue;
+
+            while (await requestStream.MoveNext())
+            {
+                Console.WriteLine("Received number " + requestStream.Current.Number);
+                if (maxNumber < requestStream.Current.Number)
+                {
+                    maxNumber = requestStream.Current.Number;
+                    await responseStream.WriteAsync(new FindMaximumResponse() { MaxNumber = maxNumber});
+                }
+            }
+        }
     }
 }
