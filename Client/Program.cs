@@ -1,4 +1,5 @@
-﻿using Calculation;
+﻿using Blog;
+using Calculation;
 using Greet;
 using Grpc.Core;
 using Sqrt;
@@ -20,7 +21,7 @@ Console.WriteLine("The client connected successfully");
 var greetClient = new GreetingService.GreetingServiceClient(channel);
 
 // Unary calls
-await DoGreet(greetClient);
+//await DoGreet(greetClient);
 //await DoGreetManyTimes(greetClient);
 
 // Client streaming
@@ -53,6 +54,41 @@ var calculationClient = new CalculationService.CalculationServiceClient(channel)
 #region SqrtService
 var sqrtClient = new SqrtService.SqrtServiceClient(channel);
 //await DoCalculateSqrt(sqrtClient);
+#endregion
+
+#region BlogService
+var blogClient = new BlogService.BlogServiceClient(channel);
+//await CreateBlog(blogClient);
+await ReadBlog(blogClient);
+
+async Task ReadBlog(BlogService.BlogServiceClient blogClient)
+{
+    try
+    {
+        var response = blogClient.ReadBlog(new ReadBlogRequest() { BlogId = "6a02374884372df8863a471d" });
+
+        Console.WriteLine(response.Blog.ToString());
+    }
+    catch (RpcException e)
+    {
+        Console.WriteLine(e.Status.Detail);
+    }
+}
+
+async Task CreateBlog(BlogService.BlogServiceClient blogClient)
+{
+    var response = blogClient.CreateBlog(new CreateBlogRequest()
+    {
+        Blog = new Blog.Blog()
+        {
+            Title = "title",
+            Content = "content",
+            AuthorId = "authorId"
+        }
+    });
+
+    Console.WriteLine("The blog " + response.Blog.Id + " was created !");
+}
 #endregion
 
 await channel.ShutdownAsync();

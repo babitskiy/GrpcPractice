@@ -1,4 +1,5 @@
-﻿using Calculation;
+﻿using Blog;
+using Calculation;
 using Greet;
 using Grpc.Core;
 using server;
@@ -24,6 +25,7 @@ try
 		Services = {	  GreetingService.BindService(new GreetingServiceImpl())
 						, CalculationService.BindService(new CalculationServiceImpl())
 						, SqrtService.BindService(new SqrtServiceImpl())
+						, BlogService.BindService(new BlogServiceImpl())
                         },
 		Ports = { new ServerPort("localhost", Port, credentials) }
 	};
