@@ -5,7 +5,13 @@ using Sqrt;
 
 const string Target = "127.0.0.1:50051";
 
-Channel channel = new(Target, ChannelCredentials.Insecure);
+var clientCert = File.ReadAllText("ssl/client.crt");
+var clientKey = File.ReadAllText("ssl/client.key");
+var caCrt = File.ReadAllText("ssl/ca.crt");
+
+var channelCredentials = new SslCredentials(caCrt, new KeyCertificatePair(clientCert, clientKey));
+
+Channel channel = new("localhost", 50051, channelCredentials);
 
 await channel.ConnectAsync();
 Console.WriteLine("The client connected successfully");
@@ -14,7 +20,7 @@ Console.WriteLine("The client connected successfully");
 var greetClient = new GreetingService.GreetingServiceClient(channel);
 
 // Unary calls
-//await DoGreet(greetClient);
+await DoGreet(greetClient);
 //await DoGreetManyTimes(greetClient);
 
 // Client streaming
@@ -23,7 +29,7 @@ var greetClient = new GreetingService.GreetingServiceClient(channel);
 // Bidirectional streaming
 //await DoGreetEveryone(greetClient);
 
-await DoGreetWithDeadline(greetClient);
+//await DoGreetWithDeadline(greetClient);
 #endregion
 
 #region CalculationService

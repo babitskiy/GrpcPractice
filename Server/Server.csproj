@@ -8,9 +8,28 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<Protobuf Include="..\*.proto"
-                  OutputDir="Models"
-                  GrpcServices="Both" />
+		<Protobuf Include="..\*.proto" OutputDir="Models" GrpcServices="Both" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <None Remove="ssl\ca.crt" />
+	  <None Remove="ssl\ca.key" />
+	  <None Remove="ssl\server.crt" />
+	  <None Remove="ssl\server.csr" />
+	  <None Remove="ssl\server.key" />
+	  <None Remove="ssl\ssl.sh" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="ssl\ca.crt">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="ssl\server.crt">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </EmbeddedResource>
+	  <EmbeddedResource Include="ssl\server.key">
+	    <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </EmbeddedResource>
 	</ItemGroup>
 
   <ItemGroup>
