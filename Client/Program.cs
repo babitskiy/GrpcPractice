@@ -22,6 +22,8 @@ var greetClient = new GreetingService.GreetingServiceClient(channel);
 
 // Bidirectional streaming
 //await DoGreetEveryone(greetClient);
+
+await DoGreetWithDeadline(greetClient);
 #endregion
 
 #region CalculationService
@@ -39,12 +41,12 @@ var calculationClient = new CalculationService.CalculationServiceClient(channel)
 //await DoComputeAverage(calcClient);
 
 // Bidirectional streaming
-await DoFindMaximum(calculationClient);
+//await DoFindMaximum(calculationClient);
 #endregion
 
 #region SqrtService
 var sqrtClient = new SqrtService.SqrtServiceClient(channel);
-await DoCalculateSqrt(sqrtClient);
+//await DoCalculateSqrt(sqrtClient);
 #endregion
 
 await channel.ShutdownAsync();
@@ -121,6 +123,19 @@ static async Task DoGreetEveryone(GreetingService.GreetingServiceClient client)
     await responseReaderTask;
 }
 
+async Task DoGreetWithDeadline(GreetingService.GreetingServiceClient client)
+{
+    try
+    {
+        var response = client.GreetingWithDeadline(new GreetingRequest() { Greeting = new Greeting() { FirstName = "John", LastName = "Rush"} },
+                                                    deadline: DateTime.UtcNow.AddMilliseconds(500));
+        Console.WriteLine(response.Result);
+    }
+    catch (RpcException e) when (e.StatusCode == StatusCode.DeadlineExceeded)
+    {
+        Console.WriteLine("Error : " + e.Status.Detail);
+    }
+}
 #endregion
 
 #region CalculationService Methods

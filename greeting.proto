@@ -51,4 +51,6 @@ service GreetingService {
 
 	// Bidi streaming
 	rpc GreetEveryone (stream GreetEveryoneRequest) returns (stream GreetEveryoneResponse) {}
+
+	rpc GreetingWithDeadline (GreetingRequest) returns (GreetingResponse) {}
 }
