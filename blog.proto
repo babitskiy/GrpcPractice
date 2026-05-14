@@ -26,7 +26,7 @@ message ReadBlogResponse {
 }
 
 message UpdateBlogRequest {
-	Blog blog_id = 1;
+	Blog blog = 1;
 }
 
 message UpdateBlogResponse {
@@ -41,9 +41,18 @@ message DeleteBlogResponse {
 	Blog blog = 1;
 }
 
+message ListBlogRequest {
+
+}
+
+message ListBlogResponse {
+	Blog blog = 1;
+}
+
 service BlogService {
 	rpc CreateBlog (CreateBlogRequest) returns (CreateBlogResponse) {}
 	rpc ReadBlog (ReadBlogRequest) returns (ReadBlogResponse) {}
 	rpc UpdateBlog (UpdateBlogRequest) returns (UpdateBlogResponse) {}
 	rpc DeleteBlog (DeleteBlogRequest) returns (DeleteBlogResponse) {}
+	rpc ListBlog (ListBlogRequest) returns (stream ListBlogResponse) {}
 }

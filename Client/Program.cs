@@ -58,10 +58,52 @@ var sqrtClient = new SqrtService.SqrtServiceClient(channel);
 
 #region BlogService
 var blogClient = new BlogService.BlogServiceClient(channel);
-//await CreateBlog(blogClient);
-await ReadBlog(blogClient);
+//var newBlog = CreateBlog(blogClient);
+//ReadBlog(blogClient);
+//UpdateBlog(blogClient, newBlog);
+//DeleteBlog(blogClient, newBlog.Id);
+await ListBlog(blogClient);
 
-async Task ReadBlog(BlogService.BlogServiceClient blogClient)
+async Task ListBlog(BlogService.BlogServiceClient blogClient)
+{
+    var response = blogClient.ListBlog(new ListBlogRequest());
+
+    while (await response.ResponseStream.MoveNext())
+    {
+        Console.WriteLine(response.ResponseStream.Current.Blog.ToString());
+    }
+}
+
+void DeleteBlog(BlogService.BlogServiceClient blogClient, string id)
+{
+    var response = blogClient.DeleteBlog(new DeleteBlogRequest() { BlogId = id });
+    Console.WriteLine("The blog " + response.Blog.Id + " was deleted !");
+    Console.WriteLine(response.Blog);
+}
+
+void UpdateBlog(BlogService.BlogServiceClient blogClient, Blog.Blog blog)
+{
+    try
+    {
+        blog.AuthorId = "authorId2";
+        blog.Title = "title2";
+        blog.Content = "content2";
+
+        var response = blogClient.UpdateBlog(new UpdateBlogRequest()
+        {
+            Blog = blog
+        });
+
+        Console.WriteLine("The blog " + response.Blog.Id + " was updated !");
+        Console.WriteLine(response.Blog);
+    }
+    catch (RpcException e)
+    {
+        Console.WriteLine(e.Status.Detail);
+    }
+}
+
+void ReadBlog(BlogService.BlogServiceClient blogClient)
 {
     try
     {
@@ -75,19 +117,22 @@ async Task ReadBlog(BlogService.BlogServiceClient blogClient)
     }
 }
 
-async Task CreateBlog(BlogService.BlogServiceClient blogClient)
+Blog.Blog CreateBlog(BlogService.BlogServiceClient blogClient)
 {
     var response = blogClient.CreateBlog(new CreateBlogRequest()
     {
         Blog = new Blog.Blog()
         {
-            Title = "title",
-            Content = "content",
-            AuthorId = "authorId"
+            Title = "title1",
+            Content = "content1",
+            AuthorId = "authorId1"
         }
     });
 
     Console.WriteLine("The blog " + response.Blog.Id + " was created !");
+    Console.WriteLine(response.Blog);
+
+    return response.Blog;
 }
 #endregion
 
